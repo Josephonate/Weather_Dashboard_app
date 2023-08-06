@@ -1,5 +1,10 @@
 var saveButton = $('#search');
-
+var city = $('.city')
+var temp = $('.temp')
+var weatherDescription = $('.weatherDescription')
+var feelsLike = $('.feelsLike')
+var humidity = $('.humidity')
+var windspeed = $('.windspeed')
 
     saveButton.click(function () {
         var city = $('#cityInput').val();
@@ -12,11 +17,11 @@ var saveButton = $('#search');
             })
             .then(function (data) {
                 console.log(data);
+
             })
             .catch(function (error) {
                 console.error('Error fetching weather data: ', error);
             });
-
     })
 
 
