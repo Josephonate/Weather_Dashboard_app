@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather forcast api</title>
 </head>
+
 <body>
     <header>5 day Weather Forcast lookup</header>
-    <textarea name="cityInput" id="searchBar" cols="30" rows="1"></textarea>
-    <button onclick="saveCity()">Search</button>
-    <script src="./assets/javascript.js"></script>
+    <div class="search">
+        <input type="text" placeholder="Enter city name." id="cityInput">
+        
+        <button id="search">Search</button>
+    </div>
+    <div class="weather">
+        <h1 class="city"></h1>
+        <div class="temp"></div>
+        <div class="weatherDescription"></div>
+        <div class="feelsLike"></div>
+        <div class="humidity"></div>
+        <div class="windspeed"></div>
+    </div>
+
 </body>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+    crossorigin="anonymous"></script>
+<script src="./assets/javascript.js"></script>
+
 </html>
