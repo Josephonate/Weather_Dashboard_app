@@ -1,97 +1,55 @@
 var saveButton = $('#search');
 
-
 saveButton.click(function () {
     var city = $('#cityInput').val();
     var weatherAPI = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=83689c9844b7838e59ff072878e7fe48';
     console.log(city);
 
     fetch(weatherAPI)
+
         .then(function (repsonse) {
             return repsonse.json();
         })
+
         .then(function (data) {
             console.log(data);
-            
+            $("#weatherDayOne").empty()
             const html = $(`
                <div class="card col-12">
                     <div class="card-body">
-                        <h5 class="card-title">${data.list[0].weather[0].description}</h5>
+                        <h5 class="card-title">${data.city.name} ${data.list[0].dt_txt} ${data.list[0].weather[0].description}</h5>
                         <p>Temp: ${data.list[0].main.temp}</p>
-                        <p>Feels like: ${data.list[0].main.feels_like}</p>
+                        <p>Wind: ${data.list[0].wind.speed}</p>
                         <p>humidity: ${data.list[0].main.humidity}%</p>
                     </div>
                 </div>
             `)
-     $("#weatherDayOne").append(html);
 
+            $("#weatherDayOne").append(html);
+
+            $("#otherDays").empty();
+            for (let i = 1; i < data.list.length; i++) {
+                if (i % 8 === 0) {
+                    const newDay = data.list[i];
+                    const htmlOtherDay = $(`
+             <div class="col">
+                 <div class="card">
+                     <div class="card-body">
+                     <h5 class="card-title">${newDay.dt_txt} ${newDay.weather[0].description}</h5>
+                     <p>Temp: ${newDay.main.temp}</p>
+                     <p>Wind: ${newDay.wind.speed}</p>
+                     <p>humidity: ${newDay.main.humidity}%</p>
+                 </div>
+                     </div>
+                 </div>   
+             </div>
+             `);
+                    $("#otherDays").append(htmlOtherDay);
+                }
+            }
         })
         .catch(function (error) {
             console.error('Error fetching weather data: ', error);
         });
 
-
-        // return showFirstDay;
-       
 })
-
-// function showFirstDay(city) {
-//     $("#weatherDayOne").empty()
-   
-//     const html = $(`
-//     //    <div class="card col-12">
-// <div class="card-body">
-// <h5 class="card-title">${data.list[0].weather.0.description}</h5>
-// <p>Temp: ${data.list[0].main.temp}</p>
-// <p>Feels like: ${data.list[0].main.feels_like}</p>
-// <p>humidity: ${data.list[0].main.humidity}"%"</p>
-// </div>
-// </div>
-//     `)
-//  $("#weatherDayOne").append(html);   
-// }
-
-
-// function showPrimaryCar(model){
-//     $("#primaryCar").empty()
-//     const primary = cars.filter((car) => car.model === model)[0];
-
-//     const html = $(`
-   
-//    <div class="card col-12">
-//     <div class="card-body">
-//         <h5 class="card-title">${primary.name}</h5>
-//         <p>Model: ${primary.model}</p>
-//         <p>Make: ${primary.make}</p>
-//         <p>Year: ${primary.year}</p>
-//     </div>
-//     </div>   
-// `)
-
-//     $("#primaryCar").append(html);
-// }
-
-
-// function showOtherCars(){
-//     $("#otherCar").empty();
-//     for (let i = 0; i < cars.length; i++) {
-//         if(i % 2 === 0){
-//          const car = cars[i];
-
-//          const html = $(`
-//             <div class="col">
-//                 <div class="card">
-//                     <div class="card-body">
-//                         <h5 class="card-title">${car.name}</h5>
-//                         <p>Model: ${car.model}</p>
-//                         <p>Make: ${car.make}</p>
-//                         <p>Year: ${car.year}</p>
-//                     </div>
-//                 </div>   
-//             </div>
-//             `);
-
-//             $("#otherCars").append(html);
-//         }
-//     }
-// }
