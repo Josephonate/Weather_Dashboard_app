@@ -16,3 +16,5 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
 https://josephonate.github.io/Weather_Dashboard_app/
+
+![Alt text](image.png)
