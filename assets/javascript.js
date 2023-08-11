@@ -12,13 +12,45 @@ saveButton.click(function () {
         })
         .then(function (data) {
             console.log(data);
-            data.list[0].main.humidity
+            
+            const html = $(`
+               <div class="card col-12">
+                    <div class="card-body">
+                        <h5 class="card-title">${data.list[0].weather[0].description}</h5>
+                        <p>Temp: ${data.list[0].main.temp}</p>
+                        <p>Feels like: ${data.list[0].main.feels_like}</p>
+                        <p>humidity: ${data.list[0].main.humidity}%</p>
+                    </div>
+                </div>
+            `)
+     $("#weatherDayOne").append(html);
 
         })
         .catch(function (error) {
             console.error('Error fetching weather data: ', error);
         });
+
+
+        // return showFirstDay;
+       
 })
+
+// function showFirstDay(city) {
+//     $("#weatherDayOne").empty()
+   
+//     const html = $(`
+//     //    <div class="card col-12">
+// <div class="card-body">
+// <h5 class="card-title">${data.list[0].weather.0.description}</h5>
+// <p>Temp: ${data.list[0].main.temp}</p>
+// <p>Feels like: ${data.list[0].main.feels_like}</p>
+// <p>humidity: ${data.list[0].main.humidity}"%"</p>
+// </div>
+// </div>
+//     `)
+//  $("#weatherDayOne").append(html);   
+// }
+
 
 // function showPrimaryCar(model){
 //     $("#primaryCar").empty()
