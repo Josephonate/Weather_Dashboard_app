@@ -1,0 +1,8 @@
+header {
+    flex: auto;
+    margin: auto;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 2px 2px  white;
+    background-image: url("./weather-images.jpg");
+}
