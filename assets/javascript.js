@@ -17,9 +17,9 @@ saveButton.click(function () {
             const html = $(`
                <div class="card col-12">
                     <div class="card-body">
-                        <h5 class="card-title">${data.city.name} ${data.list[0].dt_txt} ${data.list[0].weather[0].description}</h5>
-                        <p>Temp: ${data.list[0].main.temp}</p>
-                        <p>Wind: ${data.list[0].wind.speed}</p>
+                        <h5 class="card-title">${data.city.name} ${data.list[0].dt_txt.split(' ')[0]} ${data.list[0].weather[0].description}</h5>
+                        <p>Temp: ${data.list[0].main.temp}&#8457</p>
+                        <p>Wind: ${data.list[0].wind.speed} MPH</p>
                         <p>humidity: ${data.list[0].main.humidity}%</p>
                     </div>
                 </div>
@@ -35,9 +35,9 @@ saveButton.click(function () {
              <div class="col">
                  <div class="card">
                      <div class="card-body">
-                     <h5 class="card-title">${newDay.dt_txt} ${newDay.weather[0].description}</h5>
-                     <p>Temp: ${newDay.main.temp}</p>
-                     <p>Wind: ${newDay.wind.speed}</p>
+                     <h5 class="card-title">${newDay.dt_txt.split(' ')[0]} ${newDay.weather[0].description}</h5>
+                     <p>Temp: ${newDay.main.temp}&#8457</p>
+                     <p>Wind: ${newDay.wind.speed} MPH</p>
                      <p>humidity: ${newDay.main.humidity}%</p>
                  </div>
                      </div>
